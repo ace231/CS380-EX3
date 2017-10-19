@@ -21,7 +21,7 @@ public class Ex3Client {
 			
 			// Checking connection
 			String address = socket.getInetAddress().getHostAddress();
-			System.out.println("Connected to " + address);
+			System.out.println("Connected to server: " + address);
 			
 			// Reading in number of bytes to be read
 			int numBytes = 0 | in.read();
@@ -96,10 +96,13 @@ public class Ex3Client {
 				intTotal &= 0xFFFF;
 				intTotal++;
 			}
+			
 		} // End of for loop
 		
 		// Taking the total, converting it to its 1's complement
 		// and casting that value to a short value
+		System.out.printf("Checksum calculated: 0x%02X%n", (short)(~(					intTotal & 0xFFFF)));
+		
 		return (short)(~(intTotal & 0xFFFF));
 	}// End of checksum
 
